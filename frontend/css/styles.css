@@ -3,7 +3,7 @@
    Change these to rebrand for another clinic
    ========================================= */
 :root {
-  --color-primary: #0f766e;      /* main teal */
+--color-primary: #0f766e;    /* main teal */
   --color-primary-dark: #115e59; /* darker teal for hover */
   --color-light: #f0fdfa;        /* very light teal background */
   --color-text: #1f2937;         /* dark grey text */
