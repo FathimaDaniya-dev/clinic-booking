@@ -249,3 +249,61 @@ main section {
     padding-bottom: 3rem;
   }
 }
+
+
+/* =========================================
+   INNER PAGES (Services, Team, Contact...)
+   ========================================= */
+
+/* Highlight the current page in the menu */
+.nav-links a[aria-current="page"] {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* Coloured banner at the top of inner pages */
+.page-header {
+  text-align: center;
+  background: var(--color-light);
+}
+
+.page-header h1 {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  margin-bottom: 0.5rem;
+}
+
+.page-header p {
+  color: var(--color-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+/* Service cards: stack contents so buttons line up */
+.service-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;   /* pushes duration/price to the bottom */
+  padding: 1rem 0;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
+}
+
+.service-meta strong {
+  color: var(--color-text);
+}
+
+.service-card .btn {
+  align-self: flex-start;
+}
+
+.price-note {
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
