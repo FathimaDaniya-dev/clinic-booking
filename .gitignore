@@ -1,0 +1,11 @@
+# Installed packages (can be re-downloaded anytime)
+node_modules/
+
+# Secret settings like passwords and API keys
+.env
+
+# Hidden Mac system files
+.DS_Store
+
+# Database files (created later)
+*.db
