@@ -110,7 +110,7 @@ main section {
   font-weight: 500;
 }
 
-.nav-links a:hover {
+.nav-links a:not(.btn):hover {
   color: var(--color-primary);
 }
 
@@ -256,7 +256,7 @@ main section {
    ========================================= */
 
 /* Highlight the current page in the menu */
-.nav-links a[aria-current="page"] {
+.nav-links a[aria-current="page"]:not(.btn) {
   color: var(--color-primary);
   font-weight: 700;
 }
@@ -454,4 +454,78 @@ button.btn {
   margin-top: 1rem;
   color: var(--color-primary);
   font-weight: 600;
+}
+
+/* =========================================
+   BOOKING PAGE
+   ========================================= */
+.booking-form {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.booking-form fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.booking-form legend {
+  padding: 0 0.5rem;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--color-primary);
+}
+
+/* Grid of time buttons */
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.75rem;
+}
+
+.slots-message {
+  grid-column: 1 / -1;
+  color: var(--color-muted);
+}
+
+/* Each time slot = a hidden radio button with a styled label */
+.slot input {
+  position: absolute;
+  opacity: 0;
+}
+
+.slot span {
+  display: block;
+  padding: 0.6rem;
+  text-align: center;
+  border: 1px solid #9ca3af;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.slot span:hover {
+  border-color: var(--color-primary);
+}
+
+/* Selected time */
+.slot input:checked + span {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #ffffff;
+}
+
+/* Keyboard focus */
+.slot input:focus-visible + span {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Already booked */
+.slot input:disabled + span {
+  opacity: 0.4;
+  text-decoration: line-through;
+  cursor: not-allowed;
 }
