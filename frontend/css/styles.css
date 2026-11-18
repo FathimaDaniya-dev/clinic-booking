@@ -601,3 +601,24 @@ button.btn-cancel:hover {
   border-radius: var(--radius);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
+
+/* =========================================
+   SERVICES PAGE: 3 cards per row
+   ========================================= */
+.services-list .cards {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Tablets: 2 per row */
+@media (max-width: 900px) {
+  .services-list .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Phones: 1 per row */
+@media (max-width: 600px) {
+  .services-list .cards {
+    grid-template-columns: 1fr;
+  }
+}
