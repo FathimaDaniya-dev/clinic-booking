@@ -529,3 +529,49 @@ button.btn {
   text-decoration: line-through;
   cursor: not-allowed;
 }
+
+/* =========================================
+   MY BOOKINGS LIST
+   ========================================= */
+.my-bookings {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.booking-list {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+}
+
+.booking-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius);
+}
+
+.booking-item p {
+  color: var(--color-muted);
+  margin-top: 0.25rem;
+}
+
+.booking-empty {
+  color: var(--color-muted);
+}
+
+/* Red outline button for cancelling */
+button.btn-cancel {
+  background: #ffffff;
+  color: #b91c1c;
+  border: 1px solid #b91c1c;
+}
+
+button.btn-cancel:hover {
+  background: #fef2f2;
+}

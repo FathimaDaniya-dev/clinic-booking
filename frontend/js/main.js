@@ -259,4 +259,77 @@ if (bookingForm) {
     bookingForm.reset();
     renderSlots();
   });
+
+   // ---------- "Your bookings" list ----------
+  const bookingList = document.querySelector('#booking-list');
+
+  // "2026-11-23" -> "Monday, 23 November 2026"
+  function formatDate(dateText) {
+    return new Date(dateText + 'T00:00').toLocaleDateString('en-NZ', {
+      weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+    });
+  }
+
+  function renderBookings() {
+    const bookings = getSavedBookings();
+    bookingList.innerHTML = '';
+
+    if (bookings.length === 0) {
+      const empty = document.createElement('li');
+      empty.className = 'booking-empty';
+      empty.textContent = 'You have no bookings yet.';
+      bookingList.appendChild(empty);
+      return;
+    }
+
+    // Soonest appointment first
+    bookings.sort(function (a, b) {
+      return (a.date + a.start).localeCompare(b.date + b.start);
+    });
+
+    bookings.forEach(function (booking) {
+      const when = `${formatDate(booking.date)}, ${toTimeText(toMinutes(booking.start))} – ${toTimeText(toMinutes(booking.end))}`;
+
+      const item = document.createElement('li');
+      item.className = 'booking-item';
+
+      const details = document.createElement('div');
+      const title = document.createElement('strong');
+      title.textContent = `${booking.serviceName} · ${booking.practitionerName}`;
+      const time = document.createElement('p');
+      time.textContent = when;
+      details.append(title, time);
+
+      const cancelButton = document.createElement('button');
+      cancelButton.type = 'button';
+      cancelButton.className = 'btn btn-cancel';
+      cancelButton.textContent = 'Cancel';
+      cancelButton.setAttribute('aria-label', `Cancel ${booking.serviceName} on ${when}`);
+      cancelButton.addEventListener('click', function () {
+        cancelBooking(booking.id);
+      });
+
+      item.append(details, cancelButton);
+      bookingList.appendChild(item);
+    });
+  }
+
+  function cancelBooking(id) {
+    if (!confirm('Cancel this appointment?')) return;
+
+    // Keep every booking except the cancelled one
+    const remaining = getSavedBookings().filter(function (booking) {
+      return booking.id !== id;
+    });
+    localStorage.setItem('smileBookings', JSON.stringify(remaining));
+
+    bookingStatus.textContent = 'Your appointment has been cancelled.';
+    renderBookings();
+    renderSlots(); // the freed time becomes available again
+  }
+
+  // Update the list after each booking, and when the page loads
+  bookingForm.addEventListener('submit', renderBookings);
+  renderBookings(); 
 }
+
