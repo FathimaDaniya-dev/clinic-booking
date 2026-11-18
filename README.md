@@ -27,3 +27,6 @@ It's designed to be **reusable for any type of clinic** (dental, physiotherapy, 
 
 ## Author
 Fathima Daniya – [GitHub](https://github.com/FathimaDaniya-dev)
+
+## Credits
+Hero photo by Ozkan Guner on Unsplash
