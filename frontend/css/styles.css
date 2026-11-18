@@ -242,6 +242,8 @@ main section {
   .site-header {
     flex-direction: column;
     align-items: flex-start;
+    position: static;
+    gap: 0.5rem;
   }
 
   main section {
