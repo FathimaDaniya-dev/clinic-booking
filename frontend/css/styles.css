@@ -575,3 +575,27 @@ button.btn-cancel {
 button.btn-cancel:hover {
   background: #fef2f2;
 }
+
+/* =========================================
+   HERO WITH IMAGE
+   ========================================= */
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  align-items: center;
+  text-align: left;
+}
+
+.hero p {
+  margin: 0 0 2rem;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
